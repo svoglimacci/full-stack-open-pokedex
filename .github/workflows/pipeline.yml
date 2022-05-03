@@ -39,7 +39,7 @@ jobs:
           heroku_app_name: "blooming-citadel-90467"
           heroku_email: "svoglimacci@tuta.io"
           healthcheck: "https://blooming-citadel-90467.herokuapp.com/health"
-          checkstrings: "ok"
+          checkstring: "ok"
           delay: 5
           rollbackonhealthcheckfailed: true
   tag_release:
@@ -53,5 +53,5 @@ jobs:
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
         uses: anothrNick/github-tag-action@1.36.0
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
